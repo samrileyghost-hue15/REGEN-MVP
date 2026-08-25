@@ -23,3 +23,24 @@
 {"timestamp":"2026-08-25T15:56:19.196Z","level":"info","message":"[KiroAgent] v2 hooks loaded 0 standalone hooks from .kiro/hooks/"}
 {"timestamp":"2026-08-25T15:56:19.197Z","level":"info","message":"fs.hooksReload.ok {\"system\":\"fs\",\"durationMs\":2}"}
 {"timestamp":"2026-08-25T15:56:19.202Z","level":"info","message":"[KiroAgent] _kiro/mcp/toggle: enabled=true"}
+{"timestamp":"2026-08-25T15:56:19.355Z","level":"info","message":"[KiroAgent] ACP session/load sessionId=sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd"}
+{"timestamp":"2026-08-25T15:56:19.363Z","level":"info","message":"fs.loadSession.ok {\"system\":\"fs\",\"sessionId\":\"sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd\",\"durationMs\":8}"}
+{"timestamp":"2026-08-25T15:56:19.364Z","level":"info","message":"cloudConfig.entitlement.decided {\"verdict\":\"granted\"}"}
+{"timestamp":"2026-08-25T15:56:19.366Z","level":"info","message":"[KiroAgent] v2 hooks loaded 0 standalone hooks from .kiro/hooks/"}
+{"timestamp":"2026-08-25T15:56:19.366Z","level":"info","message":"fs.hooksReload.ok {\"system\":\"fs\",\"durationMs\":2}"}
+{"timestamp":"2026-08-25T15:56:19.377Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"user\",\"durationMs\":1}"}
+{"timestamp":"2026-08-25T15:56:19.377Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"workspace\",\"durationMs\":0}"}
+{"timestamp":"2026-08-25T15:56:19.901Z","level":"info","message":"policy.session.presets_seeded {\"sessionId\":\"sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd\",\"presets\":[\"edit-workspace\"]}"}
+{"timestamp":"2026-08-25T15:56:19.906Z","level":"info","message":"[AdapterFactory] read=ACP, write=ACP, stat=ACP, readDir=ACP, delete=ACP, terminal=ACP"}
+{"timestamp":"2026-08-25T15:56:19.906Z","level":"info","message":"acp.workspace.client_tools_resolved {\"clientToolCount\":3,\"hasClientIOTools\":false,\"injectedFileSystem\":false,\"injectedTerminalManager\":false}"}
+{"timestamp":"2026-08-25T15:56:19.909Z","level":"info","message":"[ActivityLogPublisher] Publishing to https://runtime.us-east-1.kiro.dev"}
+{"timestamp":"2026-08-25T15:56:19.909Z","level":"info","message":"[GovernanceService] Resolved {\"enterprise\":false,\"provider\":\"Google\",\"profileArn\":\"arn:aws:codewhisperer:us-east-1:699475941385:profile/EHGA3GRVQMUK\",\"controlPlaneEndpoint\":\"(none)\",\"mcpDisabled\":false,\"mcpReason\":\"admin_disabled\",\"webToolsDisabled\":false,\"autonomousAgentsDisabled\":false,\"disabledReason\":\"(none)\",\"registryUrl\":\"(none)\",\"catalogSize\":0}"}
+{"timestamp":"2026-08-25T15:56:19.923Z","level":"info","message":"[KiroAgent] _kiro/mcp/toggle: enabled=true"}
+{"timestamp":"2026-08-25T15:56:19.923Z","level":"info","message":"[KiroAgent] _kiro/mcp/toggle: enabled=true"}
+{"timestamp":"2026-08-25T15:56:19.939Z","level":"info","message":"fs.loadSession.ok {\"system\":\"fs\",\"sessionId\":\"sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd\",\"durationMs\":29}"}
+{"timestamp":"2026-08-25T15:56:19.947Z","level":"info","message":"[KiroAgent] ACP session/load complete sessionId=sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd messages=60 at=2026-08-25T15:56:19.947Z"}
+{"timestamp":"2026-08-25T15:56:19.976Z","level":"info","message":"fs.powers.scan.ok {\"system\":\"fs\",\"baseCount\":2,\"trigger\":\"warm\",\"durationMs\":35}"}
+{"timestamp":"2026-08-25T15:56:20.113Z","level":"info","message":"fs.scanNestedAgentsMd.ok {\"system\":\"fs\",\"durationMs\":142}"}
+{"timestamp":"2026-08-25T15:56:20.959Z","level":"info","message":"[RemoteToolsDiscovery] Discovered 1 Remote tools"}
+{"timestamp":"2026-08-25T15:56:20.998Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":1643}"}
+{"timestamp":"2026-08-25T15:56:20.998Z","level":"info","message":"[ACPModelConfigProvider] Loaded 9 models"}
