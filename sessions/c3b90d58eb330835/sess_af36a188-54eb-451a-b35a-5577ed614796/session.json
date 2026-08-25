@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_af36a188-54eb-451a-b35a-5577ed614796",
+  "title": "give the command for the frontend and backend",
+  "agentMode": "quick-spec",
+  "workspacePaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "createdAt": "2026-08-25T16:04:11.769Z",
+  "lastModifiedAt": "2026-08-25T16:20:11.868Z",
+  "modelId": "auto",
+  "autopilot": true,
+  "semanticReviewEnabled": true,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell"
+    }
+  }
+}

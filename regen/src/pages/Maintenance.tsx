@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, Plus, Wrench, Clock } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Wrench, Clock } from 'lucide-react';
 import { PageLoading } from '../components/ui/LoadingSpinner';
 import { SimBadge } from '../components/ui/SimBadge';
 import {
@@ -9,14 +9,10 @@ import {
 } from '../lib/dataService';
 import type { MaintenanceTask, MaintenanceVerification, Asset, Inspection } from '../types';
 import {
-  maintenanceStatusBadge, conditionBadge,
-  formatDate, formatDateTime, formatRelative,
+  maintenanceStatusBadge,
+  formatDateTime, formatRelative,
 } from '../lib/utils';
 
-const STATUS_FLOW: MaintenanceTask['status'][] = [
-  'OPEN', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED',
-  'VERIFICATION_REQUIRED', 'VERIFIED', 'CLOSED',
-];
 
 function StatusStepBar({ current }: { current: MaintenanceTask['status'] }) {
   const steps = ['OPEN', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED', 'VERIFIED', 'CLOSED'];
@@ -49,8 +45,6 @@ function MaintenanceDetail({ taskId }: { taskId: string }) {
   const [verifications, setVerifications] = useState<MaintenanceVerification[]>([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
-  const [verifyNotes, setVerifyNotes] = useState('');
-  const [verifyResult, setVerifyResult] = useState<'PASSED' | 'FAILED' | 'PARTIAL'>('PASSED');
 
   useEffect(() => {
     getMaintenanceTask(taskId).then(async t => {
@@ -303,3 +297,4 @@ export function Maintenance() {
     </div>
   );
 }
+

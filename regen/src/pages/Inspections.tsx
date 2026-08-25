@@ -10,13 +10,13 @@ import {
 import type { Inspection, Asset, TrackCircuit, FBGSensor } from '../types';
 import {
   inspectionStatusBadge, conditionBadge, tcStatusBadge, riskBadge,
-  formatDate, formatDateTime, formatRelative,
+  formatDate, formatRelative,
 } from '../lib/utils';
 
 function CreateInspectionModal({ onClose, alertId }: { onClose: () => void; alertId?: string }) {
   const [title, setTitle] = useState('');
   const [reason, setReason] = useState('');
-  const [assetId, setAssetId] = useState('50000000-0000-0000-0000-000000000021');
+  const [assetId] = useState('50000000-0000-0000-0000-000000000021');
   const [priority, setPriority] = useState<'LOW' | 'NORMAL' | 'HIGH' | 'URGENT'>('NORMAL');
   const [assignedTo, setAssignedTo] = useState('');
   const [location, setLocation] = useState('');

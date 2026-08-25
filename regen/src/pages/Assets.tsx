@@ -12,7 +12,7 @@ import {
   conditionBadge, sensorStatusBadge, riskBadge, alertPriorityBadge,
   inspectionStatusBadge, maintenanceStatusBadge,
   assetTypeLabel, trendLabel, trendColor,
-  formatDate, formatRelative, formatDateTime,
+  formatDate, formatRelative,
 } from '../lib/utils';
 
 function AssetDetail({ assetId }: { assetId: string }) {

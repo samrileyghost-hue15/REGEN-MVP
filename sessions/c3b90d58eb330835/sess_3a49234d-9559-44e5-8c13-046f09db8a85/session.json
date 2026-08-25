@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_3a49234d-9559-44e5-8c13-046f09db8a85",
+  "title": "[plugin:vite:import-analysis] Failed to resolve import \"./pages/Alerts\" from ...",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "createdAt": "2026-08-25T16:05:56.747Z",
+  "lastModifiedAt": "2026-08-25T16:07:48.822Z",
+  "modelId": "auto",
+  "semanticReviewEnabled": true,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell"
+    }
+  }
+}

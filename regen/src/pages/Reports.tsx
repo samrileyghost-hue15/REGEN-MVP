@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { PageLoading } from '../components/ui/LoadingSpinner';
 import { SimBadge } from '../components/ui/SimBadge';
-import { getTrackCircuits, getAssets, getFBGSensors, getAlerts, getInspections, getMaintenanceTasks } from '../lib/dataService';
-import type { TrackCircuit, Asset, FBGSensor, Alert, Inspection, MaintenanceTask } from '../types';
+import { getTrackCircuits, getAssets, getFBGSensors, getAlerts, getMaintenanceTasks } from '../lib/dataService';
+import type { TrackCircuit, Asset, FBGSensor, Alert, MaintenanceTask } from '../types';
 
 const COLORS = {
   healthy: '#16A34A',
@@ -19,17 +19,16 @@ export function Reports() {
   const [assets, setAssets] = useState<Asset[]>([]);
   const [sensors, setSensors] = useState<FBGSensor[]>([]);
   const [alerts, setAlerts] = useState<Alert[]>([]);
-  const [inspections, setInspections] = useState<Inspection[]>([]);
   const [tasks, setTasks] = useState<MaintenanceTask[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([
       getTrackCircuits(), getAssets(), getFBGSensors(),
-      getAlerts(), getInspections(), getMaintenanceTasks(),
-    ]).then(([t, a, s, al, i, m]) => {
+      getAlerts(), getMaintenanceTasks(),
+    ]).then(([t, a, s, al, m]) => {
       setTcs(t); setAssets(a); setSensors(s);
-      setAlerts(al); setInspections(i); setTasks(m);
+      setAlerts(al); setTasks(m);
     }).finally(() => setLoading(false));
   }, []);
 
@@ -241,3 +240,5 @@ export function Reports() {
     </div>
   );
 }
+
+

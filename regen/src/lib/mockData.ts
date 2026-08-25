@@ -5,7 +5,7 @@
 // ============================================================
 
 import type {
-  RailwayLine, Section, TrackCircuit, Signal, Asset,
+  RailwayLine, Section, TrackCircuit, Asset,
   FBGSensor, FBGReading, TrackCircuitEvent, Alert,
   Inspection, MaintenanceTask, MaintenanceVerification
 } from '../types';

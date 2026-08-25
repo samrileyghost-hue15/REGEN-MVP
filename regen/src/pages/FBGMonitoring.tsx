@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, TrendingUp, TrendingDown, Minus, WifiOff } from 'lucide-react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ReferenceLine, ResponsiveContainer, Legend
+  ReferenceLine, ResponsiveContainer
 } from 'recharts';
 import { format } from 'date-fns';
 import { PageLoading } from '../components/ui/LoadingSpinner';
@@ -12,7 +12,7 @@ import { getFBGSensors, getFBGSensor, getFBGReadings, getAsset } from '../lib/da
 import type { FBGSensor, FBGReading, Asset } from '../types';
 import {
   sensorStatusBadge, riskBadge, trendLabel, trendColor,
-  assetTypeLabel, formatRelative, formatDateTime
+  assetTypeLabel, formatRelative
 } from '../lib/utils';
 
 function TrendIcon({ trend }: { trend: string | undefined }) {
