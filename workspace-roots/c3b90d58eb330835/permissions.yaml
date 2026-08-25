@@ -1,0 +1,36 @@
+rules:
+  - capability: shell
+    effect: allow
+    match:
+      - npm create vite@latest regen -- --template react-ts 2>&1
+      - Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        -Force
+      - node --version
+      - "& 'C:\\Program Files\\nodejs\\node.exe' --version"
+      - powershell -ExecutionPolicy Bypass -Command "node --version; &
+        'C:\Program Files\nodejs\npm.cmd' --version"
+      - powershell -ExecutionPolicy Bypass -Command "& 'C:\Program
+        Files\nodejs\npm.cmd' create vite@latest regen -- --template react-ts"
+        2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro && npm create vite@latest regen --
+        --template react-ts"
+      - cmd /c "echo y | npm create vite@latest regen -- --template react-ts"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npm install"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npm install
+        @supabase/supabase-js react-router-dom recharts lucide-react date-fns"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npm install -D
+        tailwindcss@3 postcss autoprefixer @types/node"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npx tailwindcss init -p"
+      - cmd /c "mkdir C:\Users\Student\.kiro\regen\supabase\migrations"
+      - cmd /c "mkdir C:\Users\Student\.kiro\regen\src\components\ui && mkdir
+        C:\Users\Student\.kiro\regen\src\components\layout && mkdir
+        C:\Users\Student\.kiro\regen\src\pages"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npm run build 2>&1"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npx jscodeshift --dry 2>&1
+        & echo done" 2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen && npm run dev"
+      - Start-Sleep -Seconds 4
+      - echo "waited"
+      - cmd /c "mkdir C:\Users\Student\.kiro\regen\src\components\ui 2>nul &
+        mkdir C:\Users\Student\.kiro\regen\src\components\layout 2>nul & mkdir
+        C:\Users\Student\.kiro\regen\src\types 2>nul & echo done"

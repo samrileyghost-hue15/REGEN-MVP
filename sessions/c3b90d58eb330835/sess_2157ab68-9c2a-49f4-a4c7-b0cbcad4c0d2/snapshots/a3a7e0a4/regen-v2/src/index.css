@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #0A0A0A;
+    color: #F0F0F0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00FFC6; }
+}
+
+@layer components {
+  /* ── Severity badges ── */
+  .badge-critical  { @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-mono font-semibold bg-red-950/60 text-critical border border-critical/40 rounded; }
+  .badge-warning   { @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-mono font-semibold bg-amber-950/60 text-warning border border-warning/40 rounded; }
+  .badge-info      { @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-mono font-semibold bg-blue-950/60 text-info border border-info/40 rounded; }
+  .badge-healthy   { @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-mono font-semibold bg-green-950/60 text-green border border-green/40 rounded; }
+  .badge-offline   { @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-mono font-semibold bg-zinc-900 text-muted border border-border rounded; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-cyan text-bg text-sm font-semibold font-mono rounded
+    hover:bg-cyan-dim active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-cyan/50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-transparent text-cyan text-sm font-semibold font-mono rounded
+    border border-cyan/40 hover:bg-cyan/10 active:scale-95 transition-all duration-150;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-critical/20 text-critical text-sm font-semibold font-mono rounded
+    border border-critical/40 hover:bg-critical/30 active:scale-95 transition-all duration-150;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 text-text-secondary text-xs font-mono rounded
+    hover:text-text-primary hover:bg-surface2 transition-colors;
+  }
+
+  /* ── Panel / Card ── */
+  .panel { @apply bg-surface border border-border rounded; }
+  .panel-header { @apply px-4 py-3 border-b border-border flex items-center justify-between; }
+  .panel-body { @apply p-4; }
+
+  /* ── Data rows ── */
+  .data-row { @apply flex items-center justify-between py-1.5; }
+  .data-label { @apply text-xs text-text-secondary font-mono uppercase tracking-wider; }
+  .data-value { @apply text-sm text-text-primary font-mono font-medium; }
+
+  /* ── Section title ── */
+  .section-title { @apply text-xs font-mono font-semibold text-cyan uppercase tracking-widest; }
+
+  /* ── Input ── */
+  .regen-input {
+    @apply w-full bg-surface2 border border-border rounded px-3 py-2 text-sm text-text-primary font-mono
+    placeholder-text-dim focus:outline-none focus:border-cyan/50 focus:ring-1 focus:ring-cyan/20 transition-colors;
+  }
+  .regen-select {
+    @apply w-full bg-surface2 border border-border rounded px-3 py-2 text-sm text-text-primary font-mono
+    focus:outline-none focus:border-cyan/50 focus:ring-1 focus:ring-cyan/20 transition-colors cursor-pointer;
+  }
+
+  /* ── Glow effects ── */
+  .glow-cyan  { box-shadow: 0 0 12px rgba(0, 255, 198, 0.25); }
+  .glow-red   { box-shadow: 0 0 12px rgba(255, 59, 59, 0.30); }
+  .glow-amber { box-shadow: 0 0 12px rgba(255, 176, 32, 0.25); }
+}

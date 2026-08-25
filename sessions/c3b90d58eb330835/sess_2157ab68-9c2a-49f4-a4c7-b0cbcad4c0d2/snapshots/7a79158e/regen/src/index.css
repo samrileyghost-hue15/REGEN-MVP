@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-page text-[#172B3A] antialiased;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* Status badge variants */
+  .badge-normal    { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800; }
+  .badge-warning   { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800; }
+  .badge-critical  { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800; }
+  .badge-offline   { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600; }
+  .badge-occupied  { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800; }
+  .badge-fault     { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800; }
+  .badge-unknown   { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500; }
+  .badge-verify    { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800; }
+
+  /* Card */
+  .card { @apply bg-white rounded-lg border border-[#D9E1E8] shadow-sm; }
+  .card-header { @apply px-5 py-4 border-b border-[#D9E1E8]; }
+  .card-body { @apply px-5 py-4; }
+
+  /* Table */
+  .data-table { @apply w-full text-sm; }
+  .data-table th { @apply text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider py-3 px-4 bg-[#F5F7FA] border-b border-[#D9E1E8]; }
+  .data-table td { @apply py-3 px-4 border-b border-[#D9E1E8] text-[#172B3A]; }
+  .data-table tr:last-child td { @apply border-b-0; }
+  .data-table tr:hover td { @apply bg-[#F5F7FA]; }
+
+  /* Buttons */
+  .btn-primary { @apply inline-flex items-center gap-2 px-4 py-2 bg-[#145DA0] text-white text-sm font-medium rounded-md hover:bg-[#0B1F33] transition-colors; }
+  .btn-secondary { @apply inline-flex items-center gap-2 px-4 py-2 bg-white text-[#145DA0] text-sm font-medium rounded-md border border-[#145DA0] hover:bg-[#EBF3FB] transition-colors; }
+  .btn-danger { @apply inline-flex items-center gap-2 px-4 py-2 bg-[#DC2626] text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors; }
+  .btn-ghost { @apply inline-flex items-center gap-2 px-3 py-1.5 text-[#64748B] text-sm font-medium rounded-md hover:bg-[#F5F7FA] transition-colors; }
+
+  /* Section header */
+  .section-title { @apply text-lg font-semibold text-[#172B3A]; }
+  .section-subtitle { @apply text-sm text-[#64748B]; }
+
+  /* Simulated data notice */
+  .sim-notice { @apply inline-flex items-center gap-1 text-xs text-[#64748B] bg-[#F5F7FA] border border-[#D9E1E8] px-2 py-0.5 rounded; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F5F7FA; }
+::-webkit-scrollbar-thumb { background: #D9E1E8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9DB9CF; }

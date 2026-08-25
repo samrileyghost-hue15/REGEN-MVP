@@ -1,0 +1,225 @@
+rules:
+  - capability: shell
+    effect: allow
+    match:
+      - npm create vite@latest regen-railway -- --template react-ts
+      - Set-Content -Path "vite.config.ts" -Value $content -Encoding UTF8
+      - Set-Content -Path "src\index.css" -Value $css -Encoding UTF8
+      - Set-Content -Path ".env.example" -Value $env -Encoding UTF8
+      - Set-Content -Path ".env.local" -Value $env -Encoding UTF8
+      - New-Item -ItemType Directory -Path $d -Force
+      - Out-Null
+      - Write-Host "Directories created"
+      - Set-Content -Path "src\lib\supabase.ts" -Value $supabaseClient -Encoding
+        UTF8
+      - Write-Host "supabase.ts done"
+      - Set-Content -Path "src\types\index.ts" -Value $types -Encoding UTF8
+      - Write-Host "types/index.ts done"
+      - Set-Content -Path "src\types\database.ts" -Value $dbTypes -Encoding UTF8
+      - Write-Host "database.ts done"
+      - Set-Content -Path "src\utils\index.ts" -Value $utils -Encoding UTF8
+      - Write-Host "utils done"
+      - Set-Content -Path "supabase\migrations\001_schema.sql" -Value $schema
+        -Encoding UTF8
+      - Write-Host "Schema SQL done"
+      - Write-Host "Starting seed data creation"
+      - Set-Content -Path "src\data\seed.ts" -Value $seedPart1 -Encoding UTF8
+      - Write-Host "Seed part 1 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart2 -Encoding UTF8
+      - Write-Host "Seed part 2 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart3 -Encoding UTF8
+      - Write-Host "Seed part 3 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart4 -Encoding UTF8
+      - Write-Host "Seed part 4 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart5 -Encoding UTF8
+      - Write-Host "Seed part 5 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart6 -Encoding UTF8
+      - Write-Host "Seed part 6 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart7 -Encoding UTF8
+      - Write-Host "Seed part 7 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart8 -Encoding UTF8
+      - Write-Host "Seed part 8 done"
+      - Add-Content -Path "src\data\seed.ts" -Value $seedPart9 -Encoding UTF8
+      - Write-Host "Seed part 9 done"
+      - Set-Content -Path "supabase\migrations\002_seed.sql" -Value $sqlSeed
+        -Encoding UTF8
+      - Write-Host "SQL seed done"
+      - Set-Content -Path "src\store\dataStore.ts" -Value $store -Encoding UTF8
+      - Write-Host "dataStore.ts done"
+      - Set-Content -Path "src\components\ui\index.tsx" -Value $uiComponents
+        -Encoding UTF8
+      - Write-Host "UI components done"
+      - Set-Content -Path "src\components\layout\Layout.tsx" -Value $layout
+        -Encoding UTF8
+      - Write-Host "Layout done"
+      - Set-Content -Path "src\pages\Dashboard.tsx" -Value $dashboard -Encoding
+        UTF8
+      - Write-Host "Dashboard done"
+      - Set-Content -Path "src\pages\Network.tsx" -Value $networkMap -Encoding
+        UTF8
+      - Write-Host "Network map done"
+      - Set-Content -Path "src\pages\TrackCircuits.tsx" -Value $trackCircuits
+        -Encoding UTF8
+      - Write-Host "TrackCircuits done"
+      - Set-Content -Path "src\pages\Assets.tsx" -Value $assets -Encoding UTF8
+      - Write-Host "Assets done"
+      - Set-Content -Path "src\pages\FbgMonitoring.tsx" -Value $fbg -Encoding
+        UTF8
+      - Write-Host "FBG monitoring done"
+      - Set-Content -Path "src\pages\Alerts.tsx" -Value $alerts -Encoding UTF8
+      - Write-Host "Alerts done"
+      - Set-Content -Path "src\pages\Inspections.tsx" -Value $inspections
+        -Encoding UTF8
+      - Write-Host "Inspections done"
+      - Set-Content -Path "src\pages\Maintenance.tsx" -Value $maintenance
+        -Encoding UTF8
+      - Write-Host "Maintenance done"
+      - Set-Content -Path "src\pages\Reports.tsx" -Value $reports -Encoding UTF8
+      - Write-Host "Reports done"
+      - Set-Content -Path "src\store\simulation.ts" -Value $simulation -Encoding
+        UTF8
+      - Write-Host "Simulation engine done"
+      - Set-Content -Path "src\App.tsx" -Value $app -Encoding UTF8
+      - Write-Host "App.tsx done"
+      - Set-Content -Path "src\main.tsx" -Value $main -Encoding UTF8
+      - Set-Content -Path "index.html" -Value $html -Encoding UTF8
+      - Write-Host "main.tsx and index.html done"
+      - npx tsc --noEmit 2>&1
+      - head -60
+      - Select-Object -First 80
+      - npm run build 2>&1
+      - Select-Object -First 60
+      - Get-Content "src\App.tsx"
+      - Set-Content "src\App.tsx" -Encoding UTF8
+      - Get-Content "src\data\seed.ts" -Raw
+      - Set-Content "src\data\seed.ts" -Value $seedContent -Encoding UTF8
+      - Write-Host "Fixes applied"
+      - Get-Content "src\store\dataStore.ts" -Raw
+      - Set-Content "src\store\dataStore.ts" -Value $ds -Encoding UTF8
+      - Write-Host "done"
+      - Set-Content "src\store\dataStore.ts" -Value $dsFixed -Encoding UTF8
+      - Write-Host "dataStore rewritten"
+      - Get-Content "src\pages\Dashboard.tsx" -Raw
+      - Set-Content "src\pages\Dashboard.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\Alerts.tsx" -Raw
+      - Set-Content "src\pages\Alerts.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\Assets.tsx" -Raw
+      - Set-Content "src\pages\Assets.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\FbgMonitoring.tsx" -Raw
+      - Set-Content "src\pages\FbgMonitoring.tsx" -Value $content -Encoding UTF8
+      - Write-Host "Page fixes applied"
+      - Get-Content "src\pages\Inspections.tsx" -Raw
+      - Set-Content "src\pages\Inspections.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\Maintenance.tsx" -Raw
+      - Set-Content "src\pages\Maintenance.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\Network.tsx" -Raw
+      - Set-Content "src\pages\Network.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\Reports.tsx" -Raw
+      - Set-Content "src\pages\Reports.tsx" -Value $content -Encoding UTF8
+      - Get-Content "src\pages\TrackCircuits.tsx" -Raw
+      - Set-Content "src\pages\TrackCircuits.tsx" -Value $content -Encoding UTF8
+      - Write-Host "Remaining fixes done"
+      - Get-Content "tsconfig.app.json" -Raw
+      - Set-Content "tsconfig.app.json" -Value $tsconfig -Encoding UTF8
+      - Get-Content "src\store\simulation.ts" -Raw
+      - Set-Content "src\store\simulation.ts" -Value $sim -Encoding UTF8
+      - Write-Host "Config and store fixes done"
+      - Write-Host "Final page fixes done"
+      - Select-Object -First 40
+      - Get-Content "src\pages\Network.tsx"
+      - Select-Object -Skip 230 -First 20
+      - ForEach-Object { $i = 231; $_ }
+      - Set-Content "src\pages\Network.tsx" -Value ($newLines -join "`n")
+        -Encoding UTF8
+      - Write-Host "Network fix done"
+      - Write-Host "TC fix done"
+      - Write-Host "dataStore fix done"
+      - Select-Object -First 50
+      - Select-Object -Skip 140 -First 45
+      - 'ForEach-Object -Begin {$i=141} -Process { "$i`: $_"; $i++ }'
+      - Set-Content "src\pages\Network.tsx" -Value $networkFixed -Encoding UTF8
+      - Write-Host "Network rewritten cleanly"
+      - Get-ChildItem "src" -Recurse -File
+      - Select-Object
+        @{N='Path';E={$_.FullName.Replace((Get-Location).Path+'\src\','')}}
+      - $_.FullName.Replace((Get-Location).Path+'\src\','')
+      - Get-Location
+      - Sort-Object Path
+      - Format-Table -AutoSize
+      - Set-Content -Path "src\lib\theme.tsx" -Value $themeCtx -Encoding UTF8
+      - Write-Host "theme.tsx done"
+      - Write-Host "index.css done"
+      - Set-Content -Path "src\components\ui\index.tsx" -Value $ui -Encoding UTF8
+      - Set-Content -Path "src\pages\Assets.tsx" -Value $assetsPage -Encoding
+        UTF8
+      - Set-Content -Path "src\pages\FbgMonitoring.tsx" -Value $fbgPage
+        -Encoding UTF8
+      - Write-Host "FBG done"
+      - Set-Content -Path "src\pages\Alerts.tsx" -Value $alertsPage -Encoding
+        UTF8
+      - Set-Content -Path "src\pages\Inspections.tsx" -Value $inspPage -Encoding
+        UTF8
+      - Set-Content -Path "src\pages\Maintenance.tsx" -Value $maintPage
+        -Encoding UTF8
+      - Set-Content -Path "src\pages\Network.tsx" -Value $networkPage -Encoding
+        UTF8
+      - Write-Host "Network done"
+      - Set-Content -Path "src\pages\Reports.tsx" -Value $reportsPage -Encoding
+        UTF8
+      - Set-Content -Path "src\pages\System.tsx" -Value $systemPage -Encoding
+        UTF8
+      - Write-Host "System page done"
+      - Select-Object -Last 30
+      - Set-Content "src\pages\Alerts.tsx" -Encoding UTF8
+      - Write-Host "Fixed"
+      - Select-Object -Last 20
+      - Get-Content $f -Raw
+      - Set-Content $f -Value $c -Encoding UTF8
+      - Set-Content "src\pages\Reports.tsx" -Value $c -Encoding UTF8
+      - "[regex]::Escape($old)"
+      - Set-Content "src\pages\Inspections.tsx" -Value $c -Encoding UTF8
+      - "[regex]::Escape($old2)"
+      - Get-Content "src\pages\System.tsx" -Raw
+      - Set-Content "src\pages\System.tsx" -Value $c -Encoding UTF8
+      - Write-Host "All fixes applied"
+      - cmd /c "echo y | npm create vite@latest regen-v2 -- --template react-ts"
+        2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && npm install
+        react-router-dom recharts lucide-react date-fns @supabase/supabase-js"
+        2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && npm install -D
+        tailwindcss@3 postcss autoprefixer @types/node" 2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && npx tailwindcss init
+        -p" 2>&1
+      - cmd /c "mkdir C:\Users\Student\.kiro\regen-v2\src\components\layout
+        C:\Users\Student\.kiro\regen-v2\src\components\map
+        C:\Users\Student\.kiro\regen-v2\src\components\alerts
+        C:\Users\Student\.kiro\regen-v2\src\components\assets
+        C:\Users\Student\.kiro\regen-v2\src\components\work-orders
+        C:\Users\Student\.kiro\regen-v2\src\components\ui
+        C:\Users\Student\.kiro\regen-v2\src\pages
+        C:\Users\Student\.kiro\regen-v2\src\data
+        C:\Users\Student\.kiro\regen-v2\src\context
+        C:\Users\Student\.kiro\regen-v2\src\types
+        C:\Users\Student\.kiro\regen-v2\src\utils 2>nul & echo done"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && npm run build 2>&1"
+      - cmd /c "findstr /n useState
+        C:\Users\Student\.kiro\regen-v2\src\pages\Login.tsx" 2>&1
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && npm install -g
+        netlify-cli 2>&1 | tail -5" 2>&1
+      - cmd /c "npm install -g netlify-cli 2>&1"
+      - cmd /c "netlify --version 2>&1"
+      - cmd /c "where netlify 2>&1 & echo --- & dir
+        C:\Users\Student\AppData\Roaming\npm\netlify* 2>&1"
+      - cmd /c "C:\Users\Student\AppData\Roaming\npm\netlify.cmd --version 2>&1"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 &&
+        C:\Users\Student\AppData\Roaming\npm\netlify.cmd deploy --dir=dist
+        --prod --auth=sb_publishable_pEBp-n2XxBSM7ZEJkppEfw_ceaqcgII --site=new
+        2>&1"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 &&
+        C:\Users\Student\AppData\Roaming\npm\netlify.cmd login 2>&1"
+      - cmd /c "cd /d C:\Users\Student\.kiro\regen-v2 && echo y |
+        C:\Users\Student\AppData\Roaming\npm\netlify.cmd deploy --dir=dist
+        --prod 2>&1"
+      - Start-Sleep -Seconds 12
+      - Start-Sleep -Seconds 20

@@ -1,0 +1,24 @@
+{"timestamp":"2026-08-24T07:44:58.659Z","level":"info","message":"File logging initialized at C:\\Users\\Student\\.kiro\\logs\\20260824T074458585"}
+{"timestamp":"2026-08-24T07:44:58.659Z","level":"info","message":"Initializing persistence at C:\\Users\\Student\\.kiro\\sessions"}
+{"timestamp":"2026-08-24T07:44:58.664Z","level":"info","message":"[SessionPersistence] Initialized persistence at C:\\Users\\Student\\.kiro\\sessions"}
+{"timestamp":"2026-08-24T07:44:58.664Z","level":"info","message":"Persistence initialized"}
+{"timestamp":"2026-08-24T07:44:58.666Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
+{"timestamp":"2026-08-24T07:44:58.666Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
+{"timestamp":"2026-08-24T07:44:58.666Z","level":"info","message":"[KiroAgent] remote-tools-discovery.create {\"client\":\"kiro-ide\"}"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[KiroAgent] Cleared stale task execution statuses"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[KiroAgent] Platform initialized"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[KiroAgent] Resolved capabilities: {\"fsReadTextFile\":true,\"fsWriteTextFile\":true,\"kiroFsReadFile\":true,\"kiroFsWriteFile\":true,\"kiroFsStat\":true,\"kiroFsReadDirectory\":true,\"kiroFsDelete\":true,\"terminal\":true,\"secretStorage\":true,\"openExternalUrl\":true,\"knowledge\":false,\"infrastructureSafety\":true,\"c2sViews\":true,\"textSearch\":true,\"findFiles\":true}"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[RemoteToolsDiscovery] Fetching available Remote tools"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[KiroAgent] Client supports ACP secret storage"}
+{"timestamp":"2026-08-24T07:44:58.667Z","level":"info","message":"[KiroAgent] Client supports ACP openExternalUrl"}
+{"timestamp":"2026-08-24T07:44:58.668Z","level":"info","message":"[KiroAgent] Stored clientInfo.name {\"reportedClientName\":\"kiro-ide\",\"clientAttribution\":\"kiro-ide\",\"client\":\"kiro-ide\"}"}
+{"timestamp":"2026-08-24T07:44:58.668Z","level":"info","message":"[KiroAgent] Active experiments changed {\"activeExperiments\":\"\"}"}
+{"timestamp":"2026-08-24T07:44:59.672Z","level":"info","message":"[RemoteToolsDiscovery] Fetching available Remote tools"}
+{"timestamp":"2026-08-24T07:44:59.724Z","level":"info","message":"[RemoteToolsDiscovery] Discovered 5 Remote tools"}
+{"timestamp":"2026-08-24T07:44:59.808Z","level":"info","message":"network.getFeatureConfiguration.ok {\"system\":\"network\",\"durationMs\":1139}"}
+{"timestamp":"2026-08-24T07:44:59.808Z","level":"info","message":"[ExperimentConfigService] Resolved {\"origin\":\"AI_EDITOR\",\"version\":\"1.0.337\",\"keyCount\":3}"}
+{"timestamp":"2026-08-24T07:44:59.808Z","level":"info","message":"[KiroAgent] Active experiments changed {\"activeExperiments\":\"cloud_config=true\",\"previous\":\"\"}"}
+{"timestamp":"2026-08-24T07:44:59.809Z","level":"info","message":"[KiroAgent] v2 hooks cache initialized (hooks load at session start)"}
+{"timestamp":"2026-08-24T07:44:59.809Z","level":"info","message":"Handshake: returning logging config with 3 channels at C:\\Users\\Student\\.kiro\\logs\\20260824T074458585"}
+{"timestamp":"2026-08-24T07:44:59.814Z","level":"info","message":"[KiroAgent] _kiro/mcp/toggle: enabled=true"}
+{"timestamp":"2026-08-24T07:45:00.782Z","level":"info","message":"[RemoteToolsDiscovery] Discovered 1 Remote tools"}

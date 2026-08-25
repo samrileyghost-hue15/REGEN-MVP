@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_560c8078-8b1b-4c3a-bf25-1b110d92fafd",
+  "title": "git : The term 'git' is not recognized as the name of a cmdlet, function, scr...",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "createdAt": "2026-08-25T15:39:00.587Z",
+  "lastModifiedAt": "2026-08-25T15:53:26.065Z",
+  "modelId": "auto",
+  "semanticReviewEnabled": true,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_2157ab68-9c2a-49f4-a4c7-b0cbcad4c0d2",
+  "title": "REGEN v2 — Built & Deployed",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "createdAt": "2026-08-24T07:50:56.498Z",
+  "lastModifiedAt": "2026-08-25T15:34:19.094Z",
+  "modelId": "auto",
+  "autopilot": true,
+  "semanticReviewEnabled": true,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "description": "REGEN v2 fully built and deployed to Netlify. All 17 tasks complete.",
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell"
+    }
+  }
+}
