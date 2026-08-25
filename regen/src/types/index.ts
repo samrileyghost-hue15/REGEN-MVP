@@ -1,113 +1,172 @@
-export type TCStatus = 'NORMAL' | 'OCCUPIED' | 'FAULT' | 'UNKNOWN' | 'OFFLINE';
-export type TCOccupancy = 'CLEAR' | 'OCCUPIED' | 'UNKNOWN';
-export type SectionStatus = 'OPERATIONAL' | 'DEGRADED' | 'SUSPENDED' | 'MAINTENANCE' | 'OFFLINE';
-export type LineStatus = 'OPERATIONAL' | 'SUSPENDED' | 'MAINTENANCE' | 'OFFLINE';
-export type SignalStatus = 'CLEAR' | 'CAUTION' | 'DANGER' | 'UNKNOWN' | 'OFFLINE';
-export type AssetCondition = 'GOOD' | 'FAIR' | 'WARNING' | 'CRITICAL' | 'UNKNOWN';
-export type AssetType =
-  | 'COMPOSITE_SLEEPER' | 'STEEL_RAIL' | 'BRIDGE' | 'CULVERT'
-  | 'BALLAST_BED' | 'SWITCH_ASSEMBLY' | 'LEVEL_CROSSING'
-  | 'RETAINING_WALL' | 'EMBANKMENT' | 'VIADUCT';
-export type SensorStatus = 'ACTIVE' | 'WARNING' | 'FAULT' | 'OFFLINE' | 'CALIBRATING';
-export type RiskLevel = 'NORMAL' | 'SIMULATED_WARNING' | 'SIMULATED_CRITICAL' | 'OFFLINE' | 'UNKNOWN';
-export type AlertPriority = 'NORMAL' | 'WARNING' | 'HIGH' | 'CRITICAL' | 'OFFLINE' | 'REQUIRES_VERIFICATION';
-export type AlertStatus = 'OPEN' | 'ACKNOWLEDGED' | 'INVESTIGATING' | 'RESOLVED' | 'CLOSED' | 'FALSE_ALARM';
-export type AlertSource = 'TRACK_CIRCUIT' | 'FBG_SENSOR' | 'ASSET' | 'COMMUNICATION' | 'MAINTENANCE' | 'COMBINED';
-export type InspectionStatus = 'OPEN' | 'ASSIGNED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
-export type InspectionPriority = 'LOW' | 'NORMAL' | 'HIGH' | 'URGENT';
-export type MaintenanceStatus =
-  | 'OPEN' | 'ASSIGNED' | 'IN_PROGRESS' | 'COMPLETED'
-  | 'VERIFICATION_REQUIRED' | 'VERIFIED' | 'CLOSED';
-export type VerificationResult = 'PASSED' | 'FAILED' | 'PARTIAL' | 'REQUIRES_FOLLOW_UP';
-export type TrendDirection = 'STABLE' | 'INCREASING' | 'DECREASING' | 'SUDDEN_CHANGE' | 'OFFLINE';
+// ─────────────────────────────────────────────
+// REGEN v2 — Core Type Definitions
+// ─────────────────────────────────────────────
 
-export interface Organisation {
-  id: string; name: string; code: string; country: string;
-  contact_email?: string; created_at: string;
+export type Role = 'maintenance_engineer' | 'operations_manager' | 'administrator';
+
+export type SeverityLevel = 'critical' | 'warning' | 'info' | 'healthy' | 'offline';
+
+export type AssetType = 'track' | 'switch' | 'bridge' | 'sleeper' | 'station';
+
+export type SensorType = 'vibration' | 'temperature' | 'strain' | 'seismic';
+
+export type AlertStatus = 'active' | 'acknowledged' | 'resolved';
+
+export type WorkOrderStatus = 'open' | 'in_progress' | 'resolved' | 'closed';
+
+export type WorkOrderPriority = 'critical' | 'high' | 'medium' | 'low';
+
+export type DemoStage =
+  | 'idle'
+  | 'healthy'
+  | 'warning'
+  | 'critical'
+  | 'alert'
+  | 'prediction'
+  | 'work-order'
+  | 'in-progress'
+  | 'resolved'
+  | 'recovered';
+
+// ─────────────────────────────────────────────
+
+export interface User {
+  id: string;
+  name: string;
+  role: Role;
+  email: string;
+  avatar?: string;
 }
-export interface RailwayLine {
-  id: string; organisation_id: string; name: string; code: string;
-  description?: string; total_length_km?: number; status: LineStatus; created_at: string;
-}
-export interface Section {
-  id: string; railway_line_id: string; name: string; code: string;
-  description?: string; start_location?: string; end_location?: string;
-  length_km?: number; status: SectionStatus; created_at: string;
-  railway_line?: RailwayLine;
-}
-export interface TrackCircuit {
-  id: string; section_id: string; track_circuit_id: string; railway_line: string;
-  location: string; status: TCStatus; occupancy: TCOccupancy;
-  signal_relationship?: string; last_update: string;
-  fault_status?: string; fault_description?: string; created_at: string;
-  section?: Section;
-}
-export interface Signal {
-  id: string; section_id: string; track_circuit_id?: string; signal_id: string;
-  signal_type: 'COLOUR_LIGHT' | 'SEMAPHORE' | 'DWARF' | 'SHUNTING';
-  location: string; status: SignalStatus; created_at: string;
-}
+
 export interface Asset {
-  id: string; section_id: string; track_circuit_id?: string; asset_id: string;
-  asset_type: AssetType; description?: string; location: string;
-  gps_lat?: number; gps_lon?: number; installation_date?: string;
-  last_inspection?: string; condition: AssetCondition; created_at: string;
-  section?: Section; track_circuit?: TrackCircuit;
-  fbg_sensors?: FBGSensor[]; alerts?: Alert[];
+  id: string;
+  name: string;
+  type: AssetType;
+  location: string;
+  lineId: string;
+  severity: SeverityLevel;
+  lastInspection: string;
+  installDate: string;
+  description?: string;
+  // SVG map coordinates
+  mapX: number;
+  mapY: number;
 }
-export interface FBGSensor {
-  id: string; asset_id: string; sensor_id: string;
-  sensor_type: 'STRAIN' | 'TEMPERATURE' | 'DISPLACEMENT' | 'ACCELERATION';
-  baseline_strain: number; current_strain?: number; wavelength_nm?: number;
-  sensor_status: SensorStatus; risk_level: RiskLevel;
-  install_date?: string; last_reading?: string; created_at: string;
-  deviation?: number; percentage_change?: number; trend?: TrendDirection;
-  asset?: Asset; recent_readings?: FBGReading[];
+
+export interface Sensor {
+  id: string;
+  assetId: string;
+  name: string;
+  type: SensorType;
+  unit: string;
+  status: 'online' | 'offline' | 'degraded';
+  severity: SeverityLevel;
+  currentValue: number;
+  normalMin: number;
+  normalMax: number;
+  warningMax: number;
+  criticalMax: number;
+  lastUpdate: string;
+  // Map position (relative to asset)
+  mapX: number;
+  mapY: number;
 }
-export interface FBGReading {
-  id: string; sensor_id: string; timestamp: string;
-  strain_value: number; wavelength?: number; temperature?: number; is_simulated: boolean;
+
+export interface SensorReading {
+  id: string;
+  sensorId: string;
+  value: number;
+  timestamp: string;
+  severity: SeverityLevel;
 }
-export interface TrackCircuitEvent {
-  id: string; track_circuit_id: string; timestamp: string;
-  previous_status?: TCStatus; new_status: TCStatus;
-  event_type: 'STATUS_CHANGE' | 'FAULT' | 'RECOVERY' | 'OFFLINE' | 'RECONNECT' | 'MANUAL_UPDATE';
-  description?: string; is_simulated: boolean;
-}
+
 export interface Alert {
-  id: string; alert_ref: string; source_type: AlertSource; priority: AlertPriority;
-  title: string; description: string; track_circuit_id?: string; asset_id?: string;
-  sensor_id?: string; section_id?: string; status: AlertStatus;
-  acknowledged_by?: string; acknowledged_at?: string; resolved_at?: string;
-  is_simulated: boolean; created_at: string; updated_at: string;
-  track_circuit?: TrackCircuit; asset?: Asset; sensor?: FBGSensor; section?: Section;
+  id: string;
+  assetId: string;
+  sensorId?: string;
+  title: string;
+  description: string;
+  severity: SeverityLevel;
+  status: AlertStatus;
+  createdAt: string;
+  acknowledgedAt?: string;
+  resolvedAt?: string;
+  acknowledgedBy?: string;
 }
-export interface Inspection {
-  id: string; inspection_ref: string; alert_id?: string; asset_id: string;
-  track_circuit_id?: string; sensor_id?: string; title: string; reason: string;
-  priority: InspectionPriority; assigned_to?: string; inspector_name?: string;
-  status: InspectionStatus; scheduled_date?: string; completed_date?: string;
-  location?: string; findings?: string; fault_confirmed?: boolean;
-  false_alarm: boolean; photos_count: number; recommendation?: string;
-  created_at: string; updated_at: string;
-  asset?: Asset; alert?: Alert; track_circuit?: TrackCircuit; sensor?: FBGSensor;
+
+export interface Prediction {
+  id: string;
+  assetId: string;
+  sensorId?: string;
+  riskLevel: 'high' | 'medium' | 'low';
+  issue: string;
+  rulDays: number;
+  failureProbability: number;
+  recommendedAction: string;
+  generatedAt: string;
 }
-export interface MaintenanceTask {
-  id: string; maintenance_ref: string; inspection_id?: string; asset_id: string;
-  alert_id?: string; title: string; fault_description: string; cause?: string;
-  work_description?: string; assigned_technician?: string;
-  priority: InspectionPriority; status: MaintenanceStatus;
-  start_time?: string; completion_time?: string; created_at: string; updated_at: string;
-  asset?: Asset; inspection?: Inspection; verifications?: MaintenanceVerification[];
+
+export interface WorkOrder {
+  id: string;
+  assetId: string;
+  alertId?: string;
+  predictionId?: string;
+  title: string;
+  description: string;
+  priority: WorkOrderPriority;
+  status: WorkOrderStatus;
+  assignedTeam: string;
+  assignedTo?: string;
+  createdAt: string;
+  updatedAt: string;
+  resolvedAt?: string;
+  notes?: string;
 }
-export interface MaintenanceVerification {
-  id: string; maintenance_task_id: string; verified_by: string;
-  verification_date: string; result: VerificationResult; notes?: string;
-  post_strain_reading?: number; tc_status_confirmed?: string; created_at: string;
+
+export interface MaintenanceRecord {
+  id: string;
+  assetId: string;
+  workOrderId?: string;
+  type: string;
+  description: string;
+  performedBy: string;
+  performedAt: string;
+  outcome: 'completed' | 'partial' | 'deferred';
 }
-export interface DashboardStats {
-  totalSections: number; occupiedCircuits: number; tcFaults: number;
-  infraWarnings: number; criticalAssets: number;
-  fbgSensorStatus: { active: number; warning: number; fault: number; offline: number };
-  activeAlerts: number; openMaintenance: number;
+
+export interface RailwayLine {
+  id: string;
+  name: string;
+  color: string;
+  stations: Station[];
+}
+
+export interface Station {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  lineId: string;
+}
+
+// ─────────────────────────────────────────────
+// Permission model
+// ─────────────────────────────────────────────
+
+export interface RolePermissions {
+  dashboard: boolean;
+  map: boolean;
+  alerts: boolean;
+  assets: boolean;
+  workOrders: boolean;
+  sensors: boolean;
+  users: boolean;
+  settings: boolean;
+  reports: boolean;
+  canCreateWorkOrder: boolean;
+  canUpdateWorkOrderStatus: boolean;
+  canAssignWorkOrder: boolean;
+  canAcknowledgeAlert: boolean;
+  canManageUsers: boolean;
+  canConfigureSystem: boolean;
 }

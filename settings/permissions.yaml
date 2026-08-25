@@ -223,3 +223,5 @@ rules:
         --prod 2>&1"
       - Start-Sleep -Seconds 12
       - Start-Sleep -Seconds 20
+      - Get-ChildItem "c:\Users\Student\.kiro\regen\node_modules" -Directory
+      - Select-Object -First 30 -ExpandProperty Name

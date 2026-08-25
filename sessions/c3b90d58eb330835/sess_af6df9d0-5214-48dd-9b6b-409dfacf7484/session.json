@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_af6df9d0-5214-48dd-9b6b-409dfacf7484",
+  "title": "Add Express backend to regen",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\Student\\.kiro"
+  ],
+  "createdAt": "2026-08-25T16:48:57.418Z",
+  "lastModifiedAt": "2026-08-25T17:21:04.976Z",
+  "modelId": "auto",
+  "semanticReviewEnabled": true,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "description": "Writing package.json updates, server package.json, Vite proxy config, and a frontend API service layer to wire contexts to the Express backend.",
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell"
+    }
+  }
+}

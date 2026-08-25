@@ -1,34 +1,54 @@
-import { useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { Sidebar } from './Sidebar';
+import { Outlet } from 'react-router-dom';
 import { TopBar } from './TopBar';
+import { Sidebar } from './Sidebar';
+import { SystemStatus } from './SystemStatus';
+import { useDemo } from '../../context/DemoContext';
+import { X, AlertTriangle } from 'lucide-react';
 
-const titles: Record<string, { title: string; subtitle?: string }> = {
-  '/': { title: 'Dashboard', subtitle: 'System overview and live status' },
-  '/network': { title: 'Network Map', subtitle: 'Railway line and section overview' },
-  '/track-circuits': { title: 'Track Circuits', subtitle: 'READ-ONLY status monitoring — simulated data' },
-  '/assets': { title: 'Asset Register', subtitle: 'Infrastructure assets and condition monitoring' },
-  '/fbg': { title: 'FBG Monitoring', subtitle: 'Fiber Bragg Grating structural strain monitoring — simulated data' },
-  '/alerts': { title: 'Alerts', subtitle: 'System alerts and notifications' },
-  '/inspections': { title: 'Field Inspections', subtitle: 'Inspection tasks and findings' },
-  '/maintenance': { title: 'Maintenance', subtitle: 'Maintenance workflow and tasks' },
-  '/reports': { title: 'Reports', subtitle: 'Infrastructure monitoring reports' },
-};
+// Demo notification toast
+function DemoNotification() {
+  const { notification, dismissNotification } = useDemo();
+  if (!notification) return null;
+
+  return (
+    <div
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in
+        flex items-center gap-3 px-4 py-3 rounded border font-mono text-sm
+        max-w-lg w-full mx-4"
+      style={{
+        background: 'rgba(0,255,198,0.08)',
+        borderColor: 'rgba(0,255,198,0.4)',
+        boxShadow: '0 0 20px rgba(0,255,198,0.15)',
+        backdropFilter: 'blur(8px)',
+      }}
+      role="status"
+      aria-live="polite"
+    >
+      <AlertTriangle className="w-4 h-4 text-cyan flex-shrink-0" />
+      <span className="flex-1 text-text-primary text-xs">{notification}</span>
+      <button
+        onClick={dismissNotification}
+        className="text-text-dim hover:text-text-primary transition-colors"
+        aria-label="Dismiss notification"
+      >
+        <X className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  );
+}
 
 export function AppLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation();
-  const key = Object.keys(titles).filter(k => k === '/' ? location.pathname === '/' : location.pathname.startsWith(k)).sort((a, b) => b.length - a.length)[0] ?? '/';
-  const { title, subtitle } = titles[key] ?? { title: 'REGEN' };
   return (
-    <div className="flex h-screen bg-[#F5F7FA] overflow-hidden">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <TopBar onMenuClick={() => setSidebarOpen(true)} title={title} subtitle={subtitle} />
-        <main className="flex-1 overflow-y-auto">
-          <div className="p-4 lg:p-6 max-w-screen-2xl mx-auto"><Outlet /></div>
+    <div className="flex flex-col h-screen overflow-hidden bg-bg">
+      <TopBar />
+      <SystemStatus />
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar />
+        <main className="flex-1 overflow-hidden relative">
+          <Outlet />
         </main>
       </div>
+      <DemoNotification />
     </div>
   );
 }
